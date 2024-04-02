@@ -1,0 +1,63 @@
+.login-page {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    background: red; /* Replace with your actual gradient or image background */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 50px; /* Adjust size accordingly */
+  }
+  
+  .navigation a {
+    margin: 0 10px;
+    color: white; /* Adjust color accordingly */
+    text-decoration: none;
+  }
+  
+  .login-container {
+    max-width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff; /* Replace with your actual background */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .login-form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .forgot-password {
+    display: block;
+    margin-bottom: 20px;
+    color: blue; /* Adjust color accordingly */
+    text-decoration: none;
+  }
+  
+  .sign-up {
+    display: block;
+    color: blue; /* Adjust color accordingly */
+    text-decoration: none;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background: blue; /* Adjust color accordingly */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
