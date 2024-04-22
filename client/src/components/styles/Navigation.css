@@ -1,0 +1,29 @@
+.container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #8f0000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 16px 60px;
+    width: 100%;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 20px; /* Adjust the gap between nav items */
+}
+
+.nav-item {
+    margin-right: 0; /* Remove margin between nav items */
+}
+
+.nav-link {
+    color: inherit;
+    font: 700 32px Inter, sans-serif;
+    text-decoration: none;
+}
