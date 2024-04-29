@@ -2,6 +2,7 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .header {
@@ -15,7 +16,7 @@
 
 .navbar-nav {
     display: flex;
-    gap: 20px; /* Adjust the gap between nav items */
+    gap: 30px; /* Adjust the gap between nav items */
 }
 
 .nav-item {

@@ -1,10 +1,10 @@
 import './App.css';
-import HomePage from './components/Home';
+import MyComponent from './components/Login.jsx';
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <MyComponent />
     </div>
   );
 }
