@@ -1,0 +1,61 @@
+.contact-us-section {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .contact-us-card {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 1500px;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #312f2f;
+    text-align: left;
+  }
+  
+  .contact-us-card .contact-item {
+    margin-bottom: 20px;
+  }
+  .contact-us-section h1 {
+    margin-left: auto; /* Left aligns the h1 */
+    margin-right: auto; 
+    max-width: 1500px; /* Ensure consistency in width with the card */
+    width: 80%;
+    padding-left: 40px; /* Align the text to match the card's content */
+    padding-right: 40px; 
+    color: #333;
+    font-size: 24px; /* Adjust font size as needed */
+    padding-bottom: 20px; /* Space before the card */
+    margin-bottom: 0; /* Remove any default bottom margin */
+}
+  
+  .contact-us-card h2 {
+    color: #333;
+  }
+  
+  .contact-us-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .contact-link {
+    display: block; /* Ensure link starts on a new line */
+    color: blue;
+    text-decoration: underline;
+    padding: 5px 0; /* Provides padding around the link for easier clicking */
+  }
+  
+  .contact-link:hover {
+    text-decoration: none;
+  }
+  
+  ul {
+    padding-left: 20px;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
