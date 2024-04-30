@@ -4,11 +4,29 @@ import "./styles/LiveStreamCard.css";  // Ensure proper styles are defined in th
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navigation from "./Navigation";
+import Footer from "./Footer";
+import Banner from "../images/omkaar.png";
+//import BG from "../images/background.PNG";
 
 const LiveStreamCard = () => {
   return (
-    <section className="live-stream-section" style={{ backgroundImage: "url('https://cdn.builder.io/api/v1/image/assets/TEMP/af06a7fc78f3b6da1c8d399d64b3a374f108ab0eb2d9908c06137c90a6c09638?apiKey=0a7c2887b1ad4700964c6779ce9bea19&')" }}>
-      <h1>Join Our Next Live Stream!</h1>
+    <div className="container">
+    <img
+      loading="lazy"
+      src={Banner}
+      alt="Omkaar Temple banner"
+      className="banner-image"
+    />
+    <Navigation />
+    <main className="main-content">
+      {/* <img
+        loading="lazy"
+        src={BG}
+        alt="Temple background"
+        className="background-image"
+      /> */}
+      <div className="live-stream-section">
+        <h1>Join Our Next Live Stream!</h1>
       <div className="live-stream-card">
         <p>Our next livestream is scheduled for 6pm on March 8th, 2024 (Maha Shiva Rathri).</p>
         <div>
@@ -42,7 +60,10 @@ const LiveStreamCard = () => {
         </p>
         <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       </div>
-    </section>
+      </div>
+    </main>
+    <Footer />
+    </div>
   );
 }
 

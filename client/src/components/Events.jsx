@@ -8,6 +8,10 @@ import EventModal from './EventModal'; // Ensure this component is properly crea
 import './styles/Home.css';
 import './styles/AboutUs.css';
 import 'react-toastify/dist/ReactToastify.css';
+import Navigation from "./Navigation";
+import Footer from "./Footer";
+import Banner from "../images/omkaar.png";
+//import BG from "../images/background.PNG";
 
 // Calendar component with printing, adding, and modal functionality
 const CalendarCard = () => {
@@ -51,6 +55,21 @@ const CalendarCard = () => {
   };
 
   return (
+    <div className="container">
+    <img
+      loading="lazy"
+      src={Banner}
+      alt="Omkaar Temple banner"
+      className="banner-image"
+    />
+    <Navigation />
+    <main className="main-content">
+      {/* <img
+        loading="lazy"
+        src={BG}
+        alt="Temple background"
+        className="background-image"
+      /> */}
     <div className="about-us-card">
       <h1>Calendar Events</h1>
       <FullCalendar
@@ -74,6 +93,9 @@ const CalendarCard = () => {
         *All events located at main Temple site, unless otherwise specified.
       </p>
       {selectedEvent && <EventModal event={selectedEvent} onClose={closeModal} />}
+    </div>
+    </main>
+    <Footer />
     </div>
   );
 }

@@ -3,53 +3,53 @@ import { Container } from "react-bootstrap";
 
 function MyAppointment() {
 
-    const handleDelete = async (id) => {
-        try {
-            const response = await fetch(uri + `/delete-complaint/${id}`, {
-                method: 'DELETE',
-            });
-            if (response.ok) {
-                fetchComplaints(); // Refresh the complaints after deletion
-            } else {
-                console.error('Failed to delete complaint');
-            }
-        } catch (error) {
-            console.error('Error deleting complaint:', error);
-        }
-    };
+    // const handleDelete = async (id) => {
+    //     try {
+    //         const response = await fetch(uri + `/delete-complaint/${id}`, {
+    //             method: 'DELETE',
+    //         });
+    //         if (response.ok) {
+    //             fetchComplaints(); // Refresh the complaints after deletion
+    //         } else {
+    //             console.error('Failed to delete complaint');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error deleting complaint:', error);
+    //     }
+    // };
 
     const handleSortAndSearch = (key) => {
         const direction = sortConfig.key === key && sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
         setSortConfig({ key, direction });
 
         // Perform search on sorted data
-        const sortedAndSearchedComplaints = [...complaints].sort((a, b) => {
+        const sortedAndSearchedEvents = [...events].sort((a, b) => {
             if (direction === 'ascending') {
                 return a[key] > b[key] ? 1 : -1;
             } else {
                 return a[key] < b[key] ? 1 : -1;
             }
-        }).filter((complaint) =>
-            complaint[filterColumn].toLowerCase().includes(filterValue.toLowerCase())
+        }).filter((event) =>
+            event[filterColumn].toLowerCase().includes(filterValue.toLowerCase())
         );
 
-        setComplaints(sortedAndSearchedComplaints);
+        setEvent(sortedAndSearchedEvents);
     };
 
     const handleFilter = () => {
-        const filteredComplaints = complaints.filter((complaint) =>
-            complaint[filterColumn].toLowerCase().includes(filterValue.toLowerCase())
+        const filteredEvents = events.filter((event) =>
+            event[filterColumn].toLowerCase().includes(filterValue.toLowerCase())
         );
-        setComplaints(filteredComplaints);
+        setEvents(filteredEvents);
     };
 
     const handleClearFilter = () => {
-        setFilterColumn('trainNo');
+        setFilterColumn('name');
         setFilterValue('');
-        fetchComplaints();
+        fetchEvents();
     };
 
-    const sortedComplaints = [...complaints].sort((a, b) => {
+    const sortedEvents = [...events].sort((a, b) => {
         if (sortConfig.direction === 'ascending') {
             return a[sortConfig.key] > b[sortConfig.key] ? 1 : -1;
         } else {

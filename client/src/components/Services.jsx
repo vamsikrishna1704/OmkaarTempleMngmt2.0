@@ -8,11 +8,13 @@ import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 import "./styles/Home.css";
-import "./styles/Appointments.css";
+import "./styles/Services.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Banner from "../images/omkaar.png";
+//import BG from "../images/background.PNG";
 
 
-function Appointments() {
+function Services() {
     const scrollContainerRefHomams = useRef(null);
     const scrollContainerRefPoojas = useRef(null);
     const [selectedService, setSelectedService] = useState(null);
@@ -118,18 +120,18 @@ function Appointments() {
         <div className="container">
             <img
                 loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/9c63b1a57a6c57ce229ab524269293fb89caa064fce14a463cdee9f7b1a65e6a?apiKey=0a7c2887b1ad4700964c6779ce9bea19&"
+                src= {Banner}
                 alt="Omkaar Temple banner"
                 className="banner-image"
             />
             <Navigation />
             <main className="main-content">
-                <img
+                {/* <img
                     loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/af06a0a7fc78f3b6da1c8d399d64b3a374f108ab0eb2d9908c06137c90a6c09638?apiKey=0a7c2887b1ad4700964c6779ce9bea19&"
+                    src={BG}
                     alt="Temple background"
                     className="background-image"
-                />
+                /> */}
                 <Container fluid>
                     {selectedService ? (<>{isFixed === true ? (
                         <section className='content-section'>
@@ -236,4 +238,4 @@ function Appointments() {
     );
 }
 
-export default Appointments;
+export default Services;

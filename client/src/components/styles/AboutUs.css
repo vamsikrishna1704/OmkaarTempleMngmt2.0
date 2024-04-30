@@ -11,6 +11,7 @@
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    align-self: center;
   }
   
   .accordion-item {
@@ -18,7 +19,7 @@
   }
   
   .accordion-title {
-    background: #f9f9f9;
+    background: #d9d9d9;
     border: none;
     outline: none;
     width: 100%;
@@ -32,7 +33,8 @@
   }
   
   .accordion-title:hover {
-    background-color: #e2e2e2;
+    background-color: #8f0000;
+    color: white;
   }
   
   .accordion-content {
@@ -45,7 +47,7 @@
     width: 80%;
     margin: 20px;
     padding: 20px;
-    background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/af06a7fc78f3b6da1c8d399d64b3a374f108ab0eb2d9908c06137c90a6c09638?apiKey=0a7c2887b1ad4700964c6779ce9bea19&') no-repeat center center;
+    background: url('../../images/background.PNG') no-repeat center center;
     background-size: cover; /* Cover the entire area of the card */
     color: #fff; /* Assuming white text to stand out on a likely dark background */
     border-radius: 8px;
