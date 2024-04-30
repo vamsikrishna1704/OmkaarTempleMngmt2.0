@@ -3,10 +3,29 @@ import "./styles/Home.css";
 import "./styles/Education.css"; // Ensure this CSS file is similar to LiveStreamCard.css
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from "./Footer";
+import Navigation from "./Navigation";
+import Banner from "../images/omkaar.png";
+//import BG from "../images/background.PNG";
 
 const EducationCard = () => {
   return (
-    <section className="education-section" style={{ backgroundImage: "url('https://cdn.builder.io/api/v1/image/assets/TEMP/af06a7fc78f3b6da1c8d399d64b3a374f108ab0eb2d9908c06137c90a6c09638?apiKey=0a7c2887b1ad4700964c6779ce9bea19&')" }}>
+    <div className="container">
+    <img
+      loading="lazy"
+      src={Banner}
+      alt="Omkaar Temple banner"
+      className="banner-image"
+    />
+    <Navigation />
+    <main className="main-content">
+      {/* <img
+        loading="lazy"
+        src={BG}
+        alt="Temple background"
+        className="background-image"
+      /> */}
+    <div className="education-section">
       <h1>Education</h1>
       <div className="education-card">
         <h2>Journalists, Educators, and Curious Minds</h2>
@@ -17,7 +36,10 @@ const EducationCard = () => {
         <p>As you explore our website you might see links on certain Hindu words. Click on them to learn more about Hinduism. These links take you off our site however, so please be careful. External links are marked with their destinations in parenthesis ().</p>
         <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       </div>
-    </section>
+    </div>
+    </main>
+    <Footer />
+    </div>
   );
 }
 

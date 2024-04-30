@@ -3,7 +3,7 @@ import "./styles/Home.css";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Banner from "../images/omkaar.png";
-import BG from "../images/background.PNG";
+//import BG from "../images/background.PNG";
 
 const AnnouncementItem = ({ title, description, expanded, onClick }) => {
   const handleClick = () => {
@@ -179,12 +179,12 @@ function HomePage() {
       />
       <Navigation />
       <main className="main-content">
-        <img
+        {/* <img
           loading="lazy"
           src={BG}
           alt="Temple background"
           className="background-image"
-        />
+        /> */}
         <div className="announcements-section">
           <h2 className="section-title">Announcements</h2>
           <input
