@@ -1,5 +1,5 @@
 import './App.css';
-import MyComponent from './components/Login.jsx';
+import MyComponent from './components/Events.jsx';
 
 function App() {
   return (
