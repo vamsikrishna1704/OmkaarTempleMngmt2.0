@@ -1,30 +1,35 @@
-.container {
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
+/* Navigation.css */
 
 .header {
-    background-color: #8f0000;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    padding: 16px 60px;
+    background-color: #8f0000; /* Dark red background */
     width: 100%;
+    display: flex;
+    justify-content: center; /* Center navbar items */
 }
 
 .navbar-nav {
     display: flex;
-    gap: 30px; /* Adjust the gap between nav items */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Use the full width of the navbar */
+    list-style: none;/* Remove list styling */
 }
 
-.nav-item {
-    margin-right: 0; /* Remove margin between nav items */
+.nav-item, .nav-link {
+    color: #fff; /* White text color */
+    font-weight: bold; /* Bold font for nav items */
+    margin-right: 20px; /* Space between nav items */
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
-.nav-link {
-    color: inherit;
-    font: 700 32px Inter, sans-serif;
-    text-decoration: none;
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .navbar-nav {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+    .nav-item, .nav-link {
+        text-align: center; /* Center align the links */
+    }
 }

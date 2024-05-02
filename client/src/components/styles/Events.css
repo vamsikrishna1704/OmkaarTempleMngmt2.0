@@ -15,7 +15,6 @@
       display: none; /* Hide elements that are not needed for printing */
     }
   }
-  
   .print-button {
     margin-top: 20px;
     background-color: #4CAF50;
@@ -25,6 +24,7 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  
   
   .calendar-note {
     font-size: 0.85em;

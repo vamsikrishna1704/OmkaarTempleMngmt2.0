@@ -7,9 +7,11 @@ import interactionPlugin from '@fullcalendar/interaction'; // For interactive fe
 import EventModal from './EventModal'; // Ensure this component is properly created
 import './styles/Home.css';
 import './styles/AboutUs.css';
-import Navigation from './Navigation';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navigation from "./Navigation";
+import Footer from "./Footer";
+import Banner from "../images/omkaar.png";
+//import BG from "../images/background.PNG";
 
 // Calendar component with printing, adding, and modal functionality
 const CalendarCard = () => {
@@ -53,6 +55,21 @@ const CalendarCard = () => {
   };
 
   return (
+    <div className="container">
+    <img
+      loading="lazy"
+      src={Banner}
+      alt="Omkaar Temple banner"
+      className="banner-image"
+    />
+    <Navigation />
+    <main className="main-content">
+      {/* <img
+        loading="lazy"
+        src={BG}
+        alt="Temple background"
+        className="background-image"
+      /> */}
     <div className="about-us-card">
       <h1>Calendar Events</h1>
       <FullCalendar
@@ -77,26 +94,10 @@ const CalendarCard = () => {
       </p>
       {selectedEvent && <EventModal event={selectedEvent} onClose={closeModal} />}
     </div>
+    </main>
+    <Footer />
+    </div>
   );
-};
+}
 
-// Main component structure
-const MyComponent = () => {
-  return (
-    <>
-      <div className="container">
-        <img
-          loading="lazy"
-          src="../images/Omkaar"
-          alt="Omkaar Temple banner"
-          className="banner-image"
-        />
-        <Navigation />
-        <CalendarCard />
-      </div>
-      <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-    </>
-  );
-};
-
-export default MyComponent;
+export default CalendarCard;

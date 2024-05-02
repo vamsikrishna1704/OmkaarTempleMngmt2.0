@@ -1,126 +1,97 @@
+.signup-section {
+  width: 80%;
+  margin: 20px auto; /* Center the card horizontally */
+  padding: 20px;
+  background: url('../../images/background.PNG') no-repeat center center;
+  background-size: cover; /* Cover the entire area of the card */
+  color: #fff; /* Assuming white text to stand out on a likely dark background */
+  border-radius: 8px;
+  position: relative; /* Needed for layout positioning if additional elements are absolutely positioned */
+  justify-content: center;
+}
 
-  .signup-section {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 760px;
-    padding: 55px 60px;
-    width: 100%;
-  }
+.signup-card {
+  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+  padding: 40px; /* Provides padding around the content */
+  max-width: 1500px; /* Limits the maximum width of the card */
+  width: 80%; /* Sets the width to 80% of its container */
+  border-radius: 8px;
+  color: #312f2f; /* Ensures text is readable on a lighter background */
+}
 
-  .signup-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+.signup-section h1 {
+  margin-left: auto; /* Aligns header to the center of its container */
+  margin-right: auto; /* Keeps it centered */
+  max-width: 1500px; /* Same as the card to keep width consistent */
+  width: 80%; /* Matches the card's width */
+  padding-left: 10px; /* Matches the card's left padding */
+  padding-right: 40px; /* Ensures padding is consistent on both sides */
+  color: #333;
+  text-align: left; /* Aligns the text to the left within the styled <h1> area */
+}
 
-  .signup-form {
-    position: relative;
-    background-color: #d9d9d9;
-    border-radius: 5px;
-    padding: 33px 40px;
-    max-width: 593px;
-    width: 100%;
-  }
+.signup-card h2 {
+  color: #333;
+}
 
-  .form-title {
-    color: #000;
-    font-family: Inter, sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
-    margin: 0;
-  }
+.signup-card p, .signup-card li {
+  color: #666;
+  line-height: 1.6;
+}
 
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Provides spacing between label and input */
-    margin-top: 20px;
-  }
-  
-  .input-field {
-    background-color: #fff;
-    border-radius: 5px;
-    border: none;
-    padding: 8px;
-    width: 100%; /* Ensures that input takes full width of its parent container */
-    font-size: 16px;
-  }
-  
-  .input-label {
-    font-family: Inter, sans-serif;
-    flex-grow: 1;
-  }
+.signup-card label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
 
-  .required {
-    color: rgba(236, 14, 14, 1);
-  }
+.signup-card input[type="text"],
+.signup-card input[type="password"],
+.signup-card input[type="email"],
+.signup-card input[type="tel"] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.signup-card input[id="address"] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 30px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
+.signup-card textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allow vertical resizing */
+}
 
-  .input-row {
-    display: flex;
-    gap: 20px;
-    margin-top: 23px;
-  }
+.signup-card button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
 
-  .address-field {
-    height: 153px;
-    resize: none;
-  }
+.signup-card button:hover {
+  background-color: #0056b3;
+}
 
-  .submit-btn {
-    background-color: #2041ed;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-    font-family: Inter, sans-serif;
-    font-size: 24px;
-    font-weight: 500;
-    margin-top: 25px;
-    padding: 17px 55px;
-    align-self: center;
-  }
-
-  @media (max-width: 991px) {
-    .header-bg {
-      max-width: 100%;
-    }
-
-    .navbar {
-      padding: 0 20px;
-      max-width: 100%;
-    }
-
-    .nav-list {
-      flex-wrap: wrap;
-      max-width: 100%;
-    }
-
-    .signup-section {
-      padding: 0 20px;
-      max-width: 100%;
-    }
-
-    .signup-form {
-      padding: 0 20px;
-    }
-
-    .input-group,
-    .input-row {
-      flex-wrap: wrap;
-    }
-
-    .input-field {
-      max-width: 100%;
-    }
-
-    .submit-btn {
-      padding: 0 20px;
-    }
-  }
+.error {
+  color: red;
+  margin-top: 10px;
+}
