@@ -7,8 +7,17 @@ import Footer from "./Footer";
 import Navigation from "./Navigation";
 import Banner from "../images/omkaar.png";
 //import BG from "../images/background.PNG";
+import { useNavigate } from "react-router-dom";
 
 const EducationCard = () => {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('empId');
+    localStorage.setItem('role', '');
+    navigate('/');
+  };
   return (
     <div className="container">
     <img
@@ -17,14 +26,8 @@ const EducationCard = () => {
       alt="Omkaar Temple banner"
       className="banner-image"
     />
-    <Navigation />
+    <Navigation onLogout={handleLogout}/>
     <main className="main-content">
-      {/* <img
-        loading="lazy"
-        src={BG}
-        alt="Temple background"
-        className="background-image"
-      /> */}
     <div className="education-section">
       <h1>Education</h1>
       <div className="education-card">

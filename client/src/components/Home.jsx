@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import "./styles/Home.css";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Banner from "../images/omkaar.png";
+import UriContext from "./UriContext";
+import { useNavigate } from "react-router-dom";
 //import BG from "../images/background.PNG";
 
 const AnnouncementItem = ({ title, description, expanded, onClick }) => {
@@ -22,44 +24,6 @@ const AnnouncementItem = ({ title, description, expanded, onClick }) => {
     </div>
   );
 };
-
-const announcements = [
-  {
-    title: "Jan 21, 2024: Ayodhya ramamandir prana prathistapana mahothsavam",
-    description:
-      "In support to Rama mandhir Prana prathishtapana at Ayodya, India, Omkaar Temple Fort Wayne, IN, USA is posting the following events. We invite all devotees to join us, participate and make this memorable. January 21st 2024, 5:30 pm arranged samuhika Sri Rama tulasi archana with sri raama tharaka 108 mantra japam. Sri Rama Pooja @ 5:30pm Arathi @ 6:30pm All are welcome 🙏 🕉️ 🙏 Jai Sri Ram.",
-  },
-  {
-    title: "🌟 **Navarathri Celebration at Omkaar Temple** 🌟",
-    description: 
-      "In support to Rama mandhir Prana prathishtapana at Ayodya, India, Omkaar Temple Fort Wayne, IN, USA is posting the following events. We invite all devotees to join us, participate and make this memorable. January 21st 2024, 5:30 pm arranged samuhika Sri Rama tulasi archana with sri raama tharaka 108 mantra japam. Sri Rama Pooja @ 5:30pm Arathi @ 6:30pm All are welcome 🙏 🕉️ 🙏 Jai Sri Ram.",
-  },
-  {
-    title: "Hanuman Jayanthi on Sunday May 21st, 2017 @ 5pm",
-    description: 
-      "In support to Rama mandhir Prana prathishtapana at Ayodya, India, Omkaar Temple Fort Wayne, IN, USA is posting the following events. We invite all devotees to join us, participate and make this memorable. January 21st 2024, 5:30 pm arranged samuhika Sri Rama tulasi archana with sri raama tharaka 108 mantra japam. Sri Rama Pooja @ 5:30pm Arathi @ 6:30pm All are welcome 🙏 🕉️ 🙏 Jai Sri Ram.",
-  },
-  {
-    title: "Cultural Music Event at Omkaar Temple on 4/28/2017",
-    description: 
-      "In support to Rama mandhir Prana prathishtapana at Ayodya, India, Omkaar Temple Fort Wayne, IN, USA is posting the following events. We invite all devotees to join us, participate and make this memorable. January 21st 2024, 5:30 pm arranged samuhika Sri Rama tulasi archana with sri raama tharaka 108 mantra japam. Sri Rama Pooja @ 5:30pm Arathi @ 6:30pm All are welcome 🙏 🕉️ 🙏 Jai Sri Ram.",
-  },
-  {
-    title: "Jan 21, 2024: Ayodhya ramamandir prana prathistapana mahothsavam",
-    description:
-      "In support to Rama mandhir Prana prathishtapana at Ayodya, India, Omkaar Temple Fort Wayne, IN, USA is posting the following events. We invite all devotees to join us, participate and make this memorable. January 21st 2024, 5:30 pm arranged samuhika Sri Rama tulasi archana with sri raama tharaka 108 mantra japam. Sri Rama Pooja @ 5:30pm Arathi @ 6:30pm All are welcome 🙏 🕉️ 🙏 Jai Sri Ram.",
-  },
-  {
-    title: "Jan 21, 2024: Ayodhya ramamandir prana prathistapana mahothsavam",
-    description:
-      "In support to Rama mandhir Prana prathishtapana at Ayodya, India, Omkaar Temple Fort Wayne, IN, USA is posting the following events. We invite all devotees to join us, participate and make this memorable. January 21st 2024, 5:30 pm arranged samuhika Sri Rama tulasi archana with sri raama tharaka 108 mantra japam. Sri Rama Pooja @ 5:30pm Arathi @ 6:30pm All are welcome 🙏 🕉️ 🙏 Jai Sri Ram.",
-  },
-  {
-    title: "Jan 21, 2024: Ayodhya ramamandir prana prathistapana mahothsavam",
-    description:
-      "In support to Rama mandhir Prana prathishtapana at Ayodya, India, Omkaar Temple Fort Wayne, IN, USA is posting the following events. We invite all devotees to join us, participate and make this memorable. January 21st 2024, 5:30 pm arranged samuhika Sri Rama tulasi archana with sri raama tharaka 108 mantra japam. Sri Rama Pooja @ 5:30pm Arathi @ 6:30pm All are welcome 🙏 🕉️ 🙏 Jai Sri Ram.",
-  },
-];
 
 const TempleHours = () => (
   <div className="temple-hours">
@@ -154,8 +118,29 @@ const NewsletterSignup = () => (
 );
 
 function HomePage() {
+  const uri = useContext(UriContext);
+  const navigate = useNavigate();
+  const [announcements, setAnnouncements] = useState([]);
   const [expandedIndex, setExpandedIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    fetchAnnouncements();
+  });
+
+  const handleLogout = async () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('empId');
+    localStorage.setItem('role', '');
+    navigate('/');
+  };
+
+  const fetchAnnouncements = async () => {
+    const response = await fetch(uri+'/announcements');
+    const data = await response.json();
+    setAnnouncements(data);
+  };
 
   const handleExpand = (index) => {
     if (index === expandedIndex) {
@@ -177,14 +162,8 @@ function HomePage() {
         alt="Omkaar Temple banner"
         className="banner-image"
       />
-      <Navigation />
+      <Navigation onLogout={handleLogout}/>
       <main className="main-content">
-        {/* <img
-          loading="lazy"
-          src={BG}
-          alt="Temple background"
-          className="background-image"
-        /> */}
         <div className="announcements-section">
           <h2 className="section-title">Announcements</h2>
           <input
@@ -194,7 +173,6 @@ function HomePage() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-          <h2>Temple Hours</h2>
         </div>
         <section className="content-section">
           <div className="content-columns">

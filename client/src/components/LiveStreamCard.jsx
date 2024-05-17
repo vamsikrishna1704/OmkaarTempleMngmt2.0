@@ -6,9 +6,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Banner from "../images/omkaar.png";
+import { useNavigate } from "react-router-dom";
 //import BG from "../images/background.PNG";
 
 const LiveStreamCard = () => {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('empId');
+    localStorage.setItem('role', '');
+    navigate('/');
+  };
   return (
     <div className="container">
     <img
@@ -17,7 +26,7 @@ const LiveStreamCard = () => {
       alt="Omkaar Temple banner"
       className="banner-image"
     />
-    <Navigation />
+    <Navigation onLogout={handleLogout}/>
     <main className="main-content">
       {/* <img
         loading="lazy"
