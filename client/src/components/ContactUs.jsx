@@ -7,9 +7,17 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Banner from "../images/omkaar.png";
 //import BG from "../images/background.PNG";
-import { Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const ContactUsCard = () => {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('empId');
+    localStorage.setItem('role', '');
+    navigate('/');
+  };
   return (
     <div className="container">
     <img
@@ -18,7 +26,7 @@ const ContactUsCard = () => {
       alt="Omkaar Temple banner"
       className="banner-image"
     />
-    <Navigation />
+    <Navigation onLogout={handleLogout}/>
     <main className="main-content">
       {/* <img
         loading="lazy"

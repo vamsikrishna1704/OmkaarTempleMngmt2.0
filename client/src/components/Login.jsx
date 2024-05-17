@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext} from "react";
 import { Form, Button } from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,26 +6,54 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Banner from "../images/omkaar.png";
 import "./styles/Login.css";
+import UriContext from './UriContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+  const uri = useContext(UriContext);
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
     role: ""
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateForm();
     if (Object.keys(errors).length === 0) {
-      console.log("Form is valid: Submitting data");
-      // Here you would typically handle the API call or state update
+      try {
+        const response = await fetch(uri+'/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formValues),
+        });
+        const data = await response.json();
+        if (data.message === 'Logged successfully') {
+          toast.success('Logged in successfully');
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('id', data.user.empId);
+          localStorage.setItem('role', data.user.role);
+          if(data.user.role === 'Admin'){
+            navigate('/admin-home');
+          }else{
+            navigate('/');
+          }
+        } else {
+          toast.error(data.message);
+        }
+      } catch (error) {
+        toast.error('Failed to connect to the server'+error);
+      }
     } else {
       Object.values(errors).forEach(error => {
         toast.error(error);
       });
     }
   };
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,6 +82,7 @@ const LoginForm = () => {
             name="email"
             value={formValues.email}
             onChange={handleInputChange}
+            placeholder="Email"
             required
           />
         </Form.Group>
@@ -64,6 +93,7 @@ const LoginForm = () => {
             name="password"
             value={formValues.password}
             onChange={handleInputChange}
+            placeholder="Password"
             required
           />
           <Form.Text className="text-muted forgot-password">
@@ -80,9 +110,9 @@ const LoginForm = () => {
             required
           >
             <option value="">Select Role</option>
-            <option value="user">Priest</option>
-            <option value="user">Devotee</option>
-            <option value="admin">Admin</option>
+            <option value="Priest">Priest</option>
+            <option value="Devotee">Devotee</option>
+            <option value="Admin">Admin</option>
           </Form.Control>
         </Form.Group>
         <Button type="submit" className="btn-success">
